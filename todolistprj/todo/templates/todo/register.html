@@ -1,0 +1,22 @@
+{% extends 'todo/main.html' %}
+
+{% block content %}
+<div class="header-bar">
+    <h1>Se connecter</h1>
+</div>
+<div class="card-body">
+    <form method="post" action="">
+        {% csrf_token %}
+        <label>{{ form.username.label }}</label>
+        {{ form.username }}
+        <label>{{ form.password1.label }}</label>
+        {{ form.password1 }}
+        <label>{{ form.password2.label }}</label>
+        {{ form.password2 }}
+        <br> <br>
+        <input class="button" type="submit" value="S'enregister">
+
+        <small><p>Vous avez déjà un compte ? <a href="{% url 'login' %}">Connectez-vous</a></p></small>
+    </form>
+</div>
+{% endblock content %}

@@ -1,0 +1,70 @@
+{% extends 'todo/main.html' %}
+
+{% block content %}
+
+<div class="header-bar">
+  <div>
+    <h1>Hello {{ request.user|title }}</h1>
+    <h3>Vous avez <i>{{ count }}</i> chose{{ count|pluralize:'s' }} à faire</h3>
+  </div>
+  {% if request.user.is_authenticated %}
+  <a href="{% url 'logout' %}">Déconnexion</a>
+</div>
+
+{% else %}
+  <a href="{% url 'login' %}">Connexion</a>
+{% endif %}
+
+<div id="search-add-wrapper">
+  <form action="" method="get">
+    <input type="text" name="search-area" placeholder="Tâche à rechercher"/>
+    <input class="button" type="submit" value="Chercher" />
+  </form> 
+  <a id="add-link" href="{% url 'task-create' %}">&#x2b;</a>
+</div>
+
+
+
+<div class="task-items-wrapper">
+  {% for tasks in task %}
+  <div class="task-wrapper">
+    {% if tasks.complete %}
+    <div class="task-title">
+      <div class="task-complete-icon"></div>
+        <i><s><a href="{% url 'task-update' tasks.id %}">{{ tasks }}</a></s></i>
+    </div>    
+        <a class="delete-link" href="{% url 'task-delete' tasks.id %}">&#215;</a>
+    
+    {% else %}
+    <div class="task-title">
+      <div class="task-incomplete-icon"></div>
+      <a href="{% url 'task-update' tasks.id %}">{{ tasks }}</a>
+    </div>
+    <a class="delete-link" href="{% url 'task-delete' tasks.id %}">&#215;</a>
+    {% endif %}
+  </div>
+  {% empty %}
+  <h3>Pas d'éléments dans la liste</h3>
+  <a href="{% url 'task-create' %}">Ajouter une nouvelle tâche</a>
+  {% endfor %}
+
+</div>
+
+<!-- <table>
+  <tr>
+    <th>Tâches</th>
+  </tr>
+  {% for tasks in task %}
+  <tr>
+    <td>{{ tasks.id}} - {{tasks.title}}</td>
+    <td><a href="{% url 'task-detail' tasks.id %}">Détails</a></td>
+    <td><a href="{% url 'task-create' %}">Ajouter</a></td>
+    <td><a href="{% url 'task-update' tasks.id %}">Modifier</a></td>
+    <td><a href="{% url 'task-delete' tasks.id %}">Supprimer</a></td>
+  </tr>
+  {% empty %}
+  <h3>Pas d'éléments dans la liste</h3>
+  <a href="{% url 'task-create' %}">Ajouter une nouvelle tâche</a>
+  {% endfor %}
+</table> -->
+{% endblock content %}
