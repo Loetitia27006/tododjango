@@ -19,11 +19,3 @@ S
 #todolistprj/todolistprj/settings.py,b\0\b09fba2f7479ca37a48ffa7a23237e072f8c74c6
 ]
 -todolistprj/todo/templates/todo/register.html,b\7\b7bbac7fbed655ab7ba2829a05c2d0edaaa6d042
-H
-todolistprj/todo/urls.py,4\c\4cb158aac27ff9248d5e22fdb44d4c28cadd3e99
-I
-todolistprj/todo/views.py,e\5\e52c02031950f158404d6c68eff461975ebb68ee
-Y
-)todolistprj/todo/templates/todo/main.html,2\a\2abaa50077d7602d9420752ead3b529de5b1492e
-^
-.todolistprj/todo/templates/todo/task_list.html,7\d\7d6bce0b6e730f603277a240794d0e16ed43bcd2
